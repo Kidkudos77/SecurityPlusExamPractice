@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security+ Cram Guide</title>
+<style>
+:root{--bg:#f6f5f0;--card:#fff;--soft:#eeece4;--text:#1d1d1b;--muted:#5f5e5a;--line:#d8d6cc;--g:#1D9E75;--gd:#0F6E56;--gl:#E1F5EE;--r:#D85A30;--rl:#FAECE7;--a:#EF9F27}
+@media(prefers-color-scheme:dark){:root{--bg:#161614;--card:#1f1f1c;--soft:#2a2a26;--text:#f1efe8;--muted:#a8a69c;--line:#3a3a35;--gl:#0b3a2d;--rl:#4a1b0c}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+header{background:var(--gd);color:#fff;border-radius:12px;padding:18px 20px;margin-bottom:16px}
+header h1{font-size:20px;font-weight:600}
+header p{font-size:13px;opacity:.85;margin-top:2px}
+.cd{display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap}
+.cd b{background:rgba(255,255,255,.15);border-radius:6px;padding:4px 10px;font-size:16px;font-weight:600}
+.cd small{font-size:11px;opacity:.8;margin-left:2px}
+.cd input{border:none;border-radius:6px;padding:4px 8px;font-size:12px}
+nav{display:flex;gap:4px;background:var(--soft);border-radius:10px;padding:4px;margin-bottom:16px}
+nav button{flex:1;border:0;background:none;color:var(--muted);padding:9px 4px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer}
+nav button.on{background:var(--card);color:var(--text);box-shadow:0 0 0 1px var(--line)}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:12px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 16px;border-radius:8px;font-size:14px;cursor:pointer}
+.btn:hover{background:var(--soft)}
+.g{background:var(--g);border-color:var(--gd);color:#fff}.g:hover{background:var(--gd)}
+.rd{background:var(--r);border-color:#993C1D;color:#fff}.rd:hover{background:#993C1D}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{font-size:11px;font-weight:600;padding:2px 9px;border-radius:99px;background:var(--gl);color:var(--gd)}
+.stats{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.stat{background:var(--soft);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600}
+.dots{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--line)}.dot.r{background:var(--g)}.dot.w{background:var(--r)}.dot.c{background:#378ADD}
+.q{font-size:16px;font-weight:600;margin:10px 0 14px}
+.opt{display:block;width:100%;text-align:left;padding:10px 13px;margin-bottom:7px;border-radius:8px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-size:14px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--g)}
+.opt.ok{background:var(--gl);border-color:var(--gd)}
+.opt.no{background:var(--rl);border-color:var(--r)}
+.opt:disabled{cursor:default}
+.exp{display:none;margin-top:8px;padding:10px 13px;background:var(--soft);border-radius:8px;font-size:13px;color:var(--muted)}
+.flip{min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;padding:28px}
+.flip .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.flip .big{font-size:22px;font-weight:600}
+.flip .def{font-size:16px;color:var(--muted)}
+.cs h3{font-size:14px;margin:18px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:7px}
+.it{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.it b{font-size:13px;display:block}.it span{font-size:12px;color:var(--muted)}
+.day{margin-bottom:12px}.day h3{font-size:14px;margin-bottom:6px}
+.day li{font-size:14px;margin-left:18px;padding:2px 0}
+.bar{height:7px;background:var(--soft);border-radius:99px;overflow:hidden;flex:1}
+.bar i{display:block;height:100%;border-radius:99px}
+.drow{display:flex;gap:8px;align-items:center;margin-bottom:8px;font-size:13px}
+.drow span:first-child{min-width:150px;color:var(--muted)}
+.big{font-size:48px;font-weight:700}
+select{padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:14px}
+.note{font-size:12px;color:var(--muted);margin-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Security+ Cram Guide</h1>
+  <p>Quiz, flashcards, cheat sheet, and a missed-question review. Progress saves in this browser.</p>
+  <div class="cd" id="cd"></div>
+</header>
+
+<nav id="nav">
+  <button class="on" data-t="quiz">Quiz</button>
+  <button data-t="cards">Flashcards</button>
+  <button data-t="cheat">Cheat sheet</button>
+  <button data-t="missed">Missed</button>
+  <button data-t="plan">Plan</button>
+</nav>
+
+<section id="quiz" class="on">
+  <div id="qsetup" class="card">
+    <p style="margin-bottom:12px;color:var(--muted);font-size:14px">Pick a mode and a topic.</p>
+    <div class="row" style="margin-bottom:12px">
+      <select id="qmode">
+        <option value="20">Rapid fire (20)</option>
+        <option value="all">Full drill (all)</option>
+        <option value="weak">Missed only</option>
+      </select>
+      <select id="qdom"></select>
+    </div>
+    <button class="btn g" onclick="startQuiz()">Start</button>
+  </div>
+  <div id="qarea" style="display:none">
+    <div class="stats">
+      <div class="stat">Streak <span id="s-st">0</span></div>
+      <div class="stat">Right <span id="s-ok">0</span></div>
+      <div class="stat">Wrong <span id="s-no">0</span></div>
+      <div class="stat" id="s-t">0:00</div>
+    </div>
+    <div class="dots" id="dots"></div>
+    <div class="card" id="qcard"></div>
+    <div class="row">
+      <button class="btn g" id="nxt" style="display:none" onclick="nextQ()">Next</button>
+      <button class="btn g" id="fin" style="display:none" onclick="finish()">See results</button>
+    </div>
+  </div>
+  <div id="qres" style="display:none"></div>
+</section>
+
+<section id="cards">
+  <div class="row" style="margin-bottom:12px">
+    <select id="cgrp"></select>
+    <button class="btn" onclick="shuffleCards()">Shuffle</button>
+  </div>
+  <div class="card flip" id="flip" onclick="flipCard()">
+    <div class="lbl" id="flbl">Term</div>
+    <div class="big" id="ftxt"></div>
+  </div>
+  <div class="row" style="justify-content:space-between">
+    <button class="btn" onclick="stepCard(-1)">Prev</button>
+    <span id="fcount" style="font-size:13px;color:var(--muted)"></span>
+    <button class="btn" onclick="stepCard(1)">Next</button>
+  </div>
+</section>
+
+<section id="cheat" class="cs"></section>
+
+<section id="missed"></section>
+
+<section id="plan">
+  <div class="card day"><h3>Block 1: highest weight</h3><ul>
+    <li>Threats, attacks, and social engineering</li>
+    <li>Cryptography and PKI</li>
+    <li>Authentication and access management</li>
+    <li>Quiz: rapid fire, 20 questions, twice</li></ul></div>
+  <div class="card day"><h3>Block 2: infrastructure</h3><ul>
+    <li>Network appliances and secure protocols</li>
+    <li>Cloud and virtualization</li>
+    <li>Incident response, forensics, risk math (SLE x ARO)</li>
+    <li>Quiz: full drill, aim for 75% or better</li></ul></div>
+  <div class="card day"><h3>Block 3: final pass</h3><ul>
+    <li>Wireless, mobile, endpoint</li>
+    <li>Cheat sheet read-through</li>
+    <li>Quiz: missed only until it is empty</li>
+    <li>Sleep. Skim the cheat sheet in the morning.</li></ul></div>
+  <div class="card day"><h3>Exam day</h3><ul>
+    <li>Flag hard questions and return to them at the end</li>
+    <li>Do performance-based questions after the multiple choice if time is tight</li>
+    <li>Read each question for the keyword: best, first, most, least</li></ul></div>
+  <p class="note">Content follows the SY0-601 objectives from the Ciampa 7th edition course. CompTIA's current exam is SY0-701. If you are testing on it, also review the SY0-701 objectives from CompTIA's site for newer topics.</p>
+</section>
+</div>
+
+<script>
+var QS=[
+["Threats","Which attack uses fraudulent emails to steal credentials?",["Vishing","Phishing","Smishing","Pretexting"],1,"Phishing is email. Vishing is voice, smishing is SMS, pretexting is a fabricated scenario."],
+["Threats","What distinguishes spear phishing?",["It uses SMS","It targets specific people or organizations","It uses voice calls","It is untargeted"],1,"Spear phishing is targeted, often with personal details."],
+["Threats","A DDoS attack uses:",["One compromised system","Many compromised systems (botnet)","Only UDP","Only ICMP"],1,"Distributed DoS comes from many machines, which makes it hard to block."],
+["Threats","Ransomware primarily:",["Steals and sells data","Encrypts files and demands payment","Deletes files permanently","Slows the network"],1,"It encrypts files and demands payment for the key."],
+["Threats","A rootkit is designed to:",["Encrypt user data","Send spam","Hide itself while keeping privileged access","Crack Wi-Fi"],2,"Rootkits hide and keep privileged access."],
+["Threats","Tailgating threatens:",["Network security","Physical security","Application security","Cloud security"],1,"An unauthorized person follows an authorized one through a door."],
+["Threats","A zero-day vulnerability is:",["Fixed on release day","Unknown to the vendor with no patch","Exploitable for 24 hours only","A low-severity CVE"],1,"Unknown to the vendor, so no patch exists."],
+["Threats","Which tool records keystrokes to capture credentials?",["Rootkit","Keylogger","Trojan","Botnet"],1,"A keylogger records every keystroke."],
+["Threats","SQL injection exploits:",["An unpatched OS","Weak input validation","Weak passwords","A missing firewall"],1,"Unsanitized input lets attackers run SQL against the database."],
+["Threats","A watering hole attack:",["Targets DNS servers","Infects sites the target group visits","Floods servers","Poisons ARP caches"],1,"The attacker compromises sites the target group already uses."],
+["Crypto","Which encryption uses one key to encrypt and decrypt?",["Asymmetric","Hashing","Symmetric","Public-key"],2,"Symmetric uses a shared key. AES is the standard example."],
+["Crypto","Hashing is primarily used for:",["Encrypting data","Verifying integrity","Exchanging keys","Authenticating users"],1,"Any change to the data changes the hash."],
+["Crypto","A digital signature is created with the sender's:",["Public key","Shared key","Private key","Session key"],2,"Sign with the private key. Verify with the public key."],
+["Crypto","Why salt passwords before hashing?",["Faster hashing","Defeat rainbow tables","Save storage","Enable symmetric encryption"],1,"A unique salt makes precomputed tables useless."],
+["Crypto","TLS is used to:",["Hash passwords","Encrypt data in transit","Issue certificates","Store private keys"],1,"TLS protects data in transit, as in HTTPS."],
+["Crypto","A Certificate Authority:",["Encrypts traffic","Issues and signs digital certificates","Generates session keys","Stores passwords"],1,"The CA is the trusted third party in a PKI."],
+["Crypto","Which algorithm is asymmetric?",["AES","3DES","RSA","Blowfish"],2,"RSA uses a key pair. The others are symmetric."],
+["Auth","Least privilege means:",["Users get all access","Only the minimum access needed","Admins access everything","Everyone is equal"],1,"Grant only what the job requires."],
+["Auth","Which model assigns permissions by job role?",["DAC","MAC","RBAC","ABAC"],2,"Role-Based Access Control."],
+["Auth","A smart card is which factor?",["Something you know","Something you have","Something you are","Somewhere you are"],1,"A physical token is something you have."],
+["Auth","SAML is mainly used for:",["Encrypting email","Single sign-on across domains","Hashing passwords","Network access control"],1,"XML standard for exchanging authentication and authorization data."],
+["Auth","Kerberos authentication uses:",["Certificates","Tickets from a KDC","LDAP queries","OAuth tokens"],1,"The Key Distribution Center issues tickets. Active Directory default."],
+["Auth","OAuth is primarily for:",["Encrypting data","Authorizing limited third-party access","Directory authentication","Generating OTPs"],1,"Authorization, not authentication."],
+["Network","IDS versus IPS:",["IDS is hardware","IDS alerts only, IPS also blocks","IPS only monitors","No difference"],1,"Detection versus prevention."],
+["Network","A SIEM is used for:",["Encrypting data at rest","Aggregating and correlating security logs","Blocking malware","User authentication"],1,"Centralized log collection, correlation, and alerting."],
+["Network","A DMZ is:",["A firewall rule type","A segment for public-facing servers, isolated from the internal network","A VPN tunnel","An encrypted subnet"],1,"Public services live there so a compromise does not reach the LAN."],
+["Network","ARP poisoning enables:",["DNS redirection","Man-in-the-middle on a LAN","Brute force","Remote code execution"],1,"Fake ARP replies tie the attacker's MAC to a legitimate IP."],
+["Network","Zero trust means:",["Trust internal users","Never trust, always verify","Block all external traffic","Trust after first login"],1,"Every request is verified regardless of location."],
+["Cloud","In SaaS shared responsibility, who secures the data?",["Provider only","Customer only","Provider secures app and infrastructure, customer secures data","Neither"],2,"The customer always owns data and access."],
+["Cloud","A CASB enforces:",["VM isolation","Security policy between users and cloud providers","Firewall rules","Database encryption"],1,"Cloud Access Security Broker."],
+["Cloud","VM escape targets:",["User authentication","Breaking out of a VM to reach the hypervisor or other VMs","Storage encryption","Segmentation"],1,"The guest breaks isolation."],
+["IR and risk","Correct NIST incident response order:",["Detection, Preparation, Containment, Recovery","Preparation, Detection/Analysis, Containment/Eradication/Recovery, Post-incident","Containment, Detection, Preparation, Recovery","Response, Detection, Containment, Preparation"],1,"Prepare, detect, contain/eradicate/recover, lessons learned."],
+["IR and risk","Chain of custody exists to:",["Speed up forensics","Keep evidence admissible","Encrypt evidence","Prevent attacks"],1,"It documents who handled evidence, when, and how."],
+["IR and risk","RTO is:",["Maximum acceptable data loss","Maximum acceptable downtime","Rate of threat occurrence","Recovery point threshold"],1,"RTO is time. RPO is data loss."],
+["IR and risk","ALE equals:",["SLE minus ARO","SLE x ARO","ARO / SLE","CVE x CVSS"],1,"Annualized Loss Expectancy = Single Loss Expectancy x Annual Rate of Occurrence."],
+["IR and risk","Risk acceptance means:",["Eliminating the risk","Transferring it via insurance","Acknowledging it and not mitigating","Reducing its impact"],2,"Typical when mitigation costs more than the risk."],
+["IR and risk","DLP is used to:",["Detect and block unauthorized data exfiltration","Encrypt data at rest","Authenticate users","Monitor endpoint malware"],0,"Data Loss Prevention."],
+["IR and risk","PII stands for:",["Private Internet Infrastructure","Personally Identifiable Information","Protected Internal Interface","Privileged Identity Information"],1,"Data that identifies a specific person."],
+["Wireless","Which Wi-Fi protocol is broken?",["WPA2","WPA3","WEP","802.1X"],2,"WEP can be cracked in minutes."],
+["Wireless","An evil twin is:",["A fake DNS server","A rogue AP mimicking a legitimate one","A botnet","A fake certificate"],1,"Same SSID, attacker-controlled."],
+["Wireless","WPS is risky because:",["It broadcasts SSIDs","Its PIN can be brute-forced","It uses weak encryption","It disables firewalls"],1,"The 8-digit PIN is verified in halves."],
+["Protocols","Encrypted remote command-line access:",["Telnet","FTP","SSH","HTTP"],2,"SSH replaces Telnet."],
+["Protocols","DNSSEC protects against:",["DDoS","DNS poisoning via digital signatures","Wi-Fi eavesdropping","Email spoofing"],1,"Signed records let resolvers verify responses."],
+["Protocols","IPSec operates at which OSI layer?",["Application","Transport","Network","Data link"],2,"Layer 3."],
+["Mobile","Jailbreaking or rooting:",["Drains battery","Removes built-in OS security controls","Enables MDM","Improves encryption"],1,"It exposes the device to malware."],
+["Mobile","MDM stands for:",["Mobile Data Management","Mobile Device Management","Managed Defense Mode","Mobile Detection Module"],1,"IT configures and secures devices remotely."],
+["Mobile","Containerization on mobile:",["Speeds up the device","Separates corporate and personal data","Enables GPS tracking","Replaces MDM"],1,"Common in BYOD."]
+];
+
+var CS=[
+["Crypto",[["AES","Symmetric. Fast and the most common."],["RSA","Asymmetric. Key exchange and signatures."],["SHA-256","Hash. Integrity checking."],["TLS","Encrypts data in transit. Replaced SSL."],["PKI","Framework for certificates and keys. The CA issues certs."],["Salt","Random data added before hashing passwords."],["Cipher suite","Algorithms negotiated for a TLS session."],["Perfect forward secrecy","New session keys each session, so one leak does not expose the rest."]]],
+["Attacks",[["Phishing","Fraudulent email. Spear phishing is targeted."],["Vishing","Phishing by phone."],["Smishing","Phishing by SMS."],["MITM","Intercepts traffic between two parties."],["SQL injection","Malicious SQL through unvalidated input."],["XSS","Injects scripts into pages other users view."],["DDoS","Floods a target from a botnet."],["Ransomware","Encrypts files and demands payment."],["Rootkit","Hides itself and keeps privileged access."],["Watering hole","Infects sites the target group visits."]]],
+["Identity",[["MFA","Two or more of: know, have, are, location, behavior."],["RBAC","Permissions by job role."],["MAC","System-enforced by labels."],["DAC","Resource owner sets permissions."],["SAML","XML standard for SSO across domains."],["Kerberos","Ticket-based, uses a KDC, Active Directory default."],["RADIUS","Centralized AAA for network access."],["OAuth","Authorization for third-party access."]]],
+["Network and cloud",[["IDS vs IPS","IDS alerts. IPS alerts and blocks."],["SIEM","Aggregates and correlates security logs."],["DMZ","Public-facing servers isolated from the internal network."],["WAF","Filters HTTP traffic to protect web apps."],["Zero trust","Never trust, always verify."],["IaaS / PaaS / SaaS","Infrastructure, platform, software as a service."],["CASB","Enforces policy between users and cloud services."],["Shared responsibility","Provider secures infrastructure. Customer secures data."]]],
+["IR and risk",[["NIST IR steps","Prepare, detect, contain/eradicate/recover, post-incident."],["RTO","Maximum acceptable downtime."],["RPO","Maximum acceptable data loss, measured in time."],["ALE","SLE x ARO."],["Chain of custody","Evidence tracking for admissibility."],["DLP","Blocks unauthorized data exfiltration."],["BCP vs DRP","BCP covers all business functions. DRP covers IT recovery."],["IOC","Evidence a system was compromised."]]]
+];
+
+function $(i){return document.getElementById(i)}
+function load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+
+document.querySelectorAll("#nav button").forEach(function(b){b.onclick=function(){
+  document.querySelectorAll("#nav button").forEach(function(x){x.classList.toggle("on",x===b)});
+  document.querySelectorAll("section").forEach(function(s){s.classList.toggle("on",s.id===b.dataset.t)});
+  if(b.dataset.t==="missed")renderMissed();
+}});
+
+/* countdown */
+function renderCd(){
+  var d=load("examDate","");
+  var box=$("cd");
+  if(!d){box.innerHTML='<small>Exam date:</small><input type="date" id="exd"><button class="btn" style="padding:4px 10px;font-size:12px" onclick="setDate()">Set</button>';return}
+  var diff=new Date(d+"T09:00:00")-new Date();
+  if(diff<=0){box.innerHTML='<b>Exam day has arrived</b><button class="btn" style="padding:4px 10px;font-size:12px" onclick="clearDate()">Change</button>';return}
+  var days=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4);
+  box.innerHTML='<b>'+days+'<small>d</small></b><b>'+h+'<small>h</small></b><b>'+m+'<small>m</small></b><button class="btn" style="padding:4px 10px;font-size:12px" onclick="clearDate()">Change</button>';
+}
+function setDate(){var v=$("exd").value;if(v){save("examDate",v);renderCd()}}
+function clearDate(){save("examDate","");renderCd()}
+renderCd();setInterval(renderCd,30000);
+
+/* quiz */
+var doms=["All topics"].concat(Array.from(new Set(QS.map(function(q){return q[0]}))));
+$("qdom").innerHTML=doms.map(function(d,i){return '<option value="'+(i?d:"")+'">'+d+'</option>'}).join("");
+var pool,qi,ok,no,st,ans,tm,tmr;
+function startQuiz(){
+  var mode=$("qmode").value,dom=$("qdom").value;
+  var missed=load("missed",[]);
+  var p=QS.map(function(q,i){return i}).filter(function(i){return !dom||QS[i][0]===dom});
+  if(mode==="weak")p=p.filter(function(i){return missed.indexOf(i)>-1});
+  p=shuf(p);
+  if(mode==="20")p=p.slice(0,20);
+  if(!p.length){alert("No questions match. Try a different mode or topic.");return}
+  pool=p;qi=0;ok=0;no=0;st=0;ans=[];tm=0;
+  clearInterval(tmr);tmr=setInterval(function(){tm++;$("s-t").textContent=Math.floor(tm/60)+":"+("0"+tm%60).slice(-2)},1000);
+  $("qsetup").style.display="none";$("qres").style.display="none";$("qarea").style.display="block";
+  showQ();
+}
+function dots(){$("dots").innerHTML=pool.map(function(_,i){var c="dot";if(i<qi)c+=ans[i]?" r":" w";if(i===qi)c+=" c";return '<div class="'+c+'"></div>'}).join("")}
+function stats(){$("s-st").textContent=st;$("s-ok").textContent=ok;$("s-no").textContent=no}
+function showQ(){
+  dots();stats();
+  var q=QS[pool[qi]];
+  $("qcard").innerHTML='<div class="row" style="justify-content:space-between"><span class="pill">'+q[0]+'</span><span style="font-size:12px;color:var(--muted)">'+(qi+1)+' / '+pool.length+'</span></div><div class="q">'+q[1]+'</div>'+
+    q[2].map(function(o,i){return '<button class="opt" onclick="pick('+i+')">'+"ABCD"[i]+". "+o+'</button>'}).join("")+'<div class="exp" id="exp">'+q[4]+'</div>';
+  $("nxt").style.display="none";$("fin").style.display="none";
+}
+function pick(i){
+  var id=pool[qi],q=QS[id],b=document.querySelectorAll(".opt");
+  b.forEach(function(x){x.disabled=true});
+  b[q[3]].classList.add("ok");
+  var right=i===q[3];
+  if(!right)b[i].classList.add("no");
+  ans[qi]=right;
+  var missed=load("missed",[]);
+  if(right){ok++;st++;var k=missed.indexOf(id);if(k>-1)missed.splice(k,1)}
+  else{no++;st=0;if(missed.indexOf(id)<0)missed.push(id)}
+  save("missed",missed);
+  stats();dots();$("exp").style.display="block";
+  $(qi<pool.length-1?"nxt":"fin").style.display="inline-block";
+}
+function nextQ(){qi++;showQ()}
+function finish(){
+  clearInterval(tmr);
+  var pct=Math.round(ok/pool.length*100),by={};
+  pool.forEach(function(id,i){var d=QS[id][0];by[d]=by[d]||[0,0];by[d][1]++;if(ans[i])by[d][0]++});
+  var rows=Object.keys(by).map(function(d){var p=Math.round(by[d][0]/by[d][1]*100);var c=p>=80?"var(--g)":p>=60?"var(--a)":"var(--r)";
+    return '<div class="drow"><span>'+d+'</span><div class="bar"><i style="width:'+p+'%;background:'+c+'"></i></div><span style="min-width:36px;text-align:right;color:var(--text)">'+p+'%</span></div>'}).join("");
+  var hist=load("hist",[]);hist.push(pct);save("hist",hist.slice(-20));
+  var miss=load("missed",[]).length;
+  $("qarea").style.display="none";$("qres").style.display="block";
+  $("qres").innerHTML='<div class="card" style="text-align:center"><div class="big" style="color:'+(pct>=80?"var(--g)":pct>=60?"var(--a)":"var(--r)")+'">'+pct+'%</div><p style="color:var(--muted);font-size:14px;margin-bottom:16px">'+ok+' of '+pool.length+' correct in '+Math.floor(tm/60)+":"+("0"+tm%60).slice(-2)+'</p><div style="text-align:left">'+rows+'</div><div class="row" style="justify-content:center;margin-top:18px"><button class="btn g" onclick="startQuiz()">Again</button>'+(miss?'<button class="btn rd" onclick="$(\'qmode\').value=\'weak\';startQuiz()">Drill missed ('+miss+')</button>':'')+'<button class="btn" onclick="resetQuiz()">Change mode</button></div></div>';
+}
+function resetQuiz(){$("qsetup").style.display="block";$("qarea").style.display="none";$("qres").style.display="none"}
+
+/* flashcards */
+var grp=["All"].concat(CS.map(function(c){return c[0]}));
+$("cgrp").innerHTML=grp.map(function(g){return '<option>'+g+'</option>'}).join("");
+$("cgrp").onchange=function(){buildCards()};
+var deck=[],ci=0,flipped=false;
+function buildCards(){
+  var g=$("cgrp").value;deck=[];
+  CS.forEach(function(c){if(g==="All"||g===c[0])c[1].forEach(function(t){deck.push(t)})});
+  ci=0;drawCard();
+}
+function shuffleCards(){deck=shuf(deck);ci=0;drawCard()}
+function drawCard(){flipped=false;$("flbl").textContent="Term";$("ftxt").className="big";$("ftxt").textContent=deck[ci][0];$("fcount").textContent=(ci+1)+" / "+deck.length}
+function flipCard(){flipped=!flipped;$("flbl").textContent=flipped?"Definition":"Term";$("ftxt").className=flipped?"def":"big";$("ftxt").textContent=flipped?deck[ci][1]:deck[ci][0]}
+function stepCard(n){ci=(ci+n+deck.length)%deck.length;drawCard()}
+buildCards();
+
+/* cheat sheet */
+$("cheat").innerHTML=CS.map(function(c){return '<h3>'+c[0]+'</h3><div class="grid">'+c[1].map(function(t){return '<div class="it"><b>'+t[0]+'</b><span>'+t[1]+'</span></div>'}).join("")+'</div>'}).join("");
+
+/* missed */
+function renderMissed(){
+  var m=load("missed",[]),hist=load("hist",[]);
+  var h=hist.length?'<div class="card"><b>Recent quiz scores:</b> '+hist.slice(-8).map(function(x){return x+"%"}).join(", ")+'</div>':"";
+  if(!m.length){$("missed").innerHTML=h+'<div class="card" style="color:var(--muted)">Nothing missed yet. Questions you get wrong show up here until you answer them correctly.</div>';return}
+  $("missed").innerHTML=h+'<div class="row" style="margin-bottom:12px"><button class="btn rd" onclick="document.querySelector(\'[data-t=quiz]\').click();$(\'qmode\').value=\'weak\';startQuiz()">Drill these ('+m.length+')</button><button class="btn" onclick="if(confirm(\'Clear missed list?\')){save(\'missed\',[]);renderMissed()}">Clear</button></div>'+
+    m.map(function(id){var q=QS[id];return '<div class="card"><span class="pill">'+q[0]+'</span><div class="q" style="font-size:15px">'+q[1]+'</div><div style="font-size:14px"><b>'+q[2][q[3]]+'</b></div><div style="font-size:13px;color:var(--muted);margin-top:4px">'+q[4]+'</div></div>'}).join("");
+}
+</script>
+</body>
+</html>
